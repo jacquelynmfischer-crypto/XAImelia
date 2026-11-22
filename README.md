@@ -1,0 +1,127 @@
+# XAImelia
+
+**AIPI 590.01 Fa26 at Duke University · Project 2 · Jacquelyn Fischer**
+
+XAImelia is a browser game that teaches explainable AI (XAI) and responsible AI use through AImelia, a cheerful robot helper who does exactly what she is told. Across six levels, one for each unit of the course, players watch AImelia fail in a literal-minded way, diagnose why using real XAI tools and concepts, fix her, and only then learn the formal term for what just happened.
+
+**Play it here:** https://jacquelynmfischer-crypto.github.io/XAImelia/
+
+No account, install or download is needed. The game runs in any modern browser on a computer or phone.
+
+---
+
+## Design question
+
+> Can a game teach responsible AI use the way building toys teach STEM, by letting players watch an AI fail, diagnose why, and fix it before they learn the formal XAI concept behind it?
+
+## Why this matters
+
+STEM education has a long history of turning hard concepts into play. LEGO bricks, Snap Circuits and coding robots let kids learn engineering, electronics and programming by building something, breaking it and fixing it, long before they learn the formal vocabulary. Responsible AI has no equivalent, even though far more people now use AI than will ever build it. As a result, most people learn how AI fails only after it fails on them.
+
+XAImelia gamifies the core concepts of explainable AI so that players experience each failure in a safe, silly setting first, and then learn the term that names it. The approach follows constructionist learning, where people learn best by building and debugging things (Papert, 1980), and the idea that good games teach by letting players fail safely and learn a concept through the experience (Gee, 2003).
+
+**Audience:** non-expert AI users, from teens to professionals, who use AI tools but do not build them.
+
+## How to play
+
+1. Open the link above. A short pre-game survey asks for your name, age, how familiar you are with using AI, and how familiar you are with the XAI concepts in each unit. You can skip or exit it.
+2. Click the glowing objects in each scene, or use the buttons under the scene. Text only advances when you click **Next**, so nothing moves faster than you can read.
+3. When AImelia does something strange, click **eXplain AImelia's thinking**. Each exercise requires it before you can move on, and it explains the concept and vocabulary behind what you just saw.
+4. The panel on the right is **AImelia's brain**. It changes in every level to match the unit: readable rules in Level 1, a locked black box in Level 2, a circuit board in Level 3, a security console in Level 4, a reward chart in Level 5, and her documentation and trace log in Level 6.
+5. After Level 6, a short post-game survey asks the same familiarity questions again, how long you played, and an optional message to the creator.
+
+The **Skip to** menu next to the title jumps to any unit, either survey, the credits, or the password-protected results page.
+
+To run it offline, download `index.html` and open it in a browser. Everything is in that one file.
+
+## The six levels
+
+| Level | Setting | Unit | What happens | Concepts |
+|---|---|---|---|---|
+| 1 | The Kitchen | Interpretable ML | AImelia learns "red = hot" from one burner and grabs a silver pot, then eats every vegetable because her points only go up. | Interpretable model, decision rule, OneR, shortcut learning, counterexample, linear model, monotonic, GAM |
+| 2 | The Laundry Room | Explainable ML | You train her on socks, shirts and pants that happen to line up with whites, lights and darks. On laundry day the white shirt comes out pink, and four XAI tools unlock her black-box brain. | Black-box model, training data, spurious correlation, post-hoc, local and global explanation, saliency map, SHAP, counterfactual, faithfulness |
+| 3 | The Garden | Mechanistic Interpretability | She pulls the weeds, the tomatoes and a flower off her own bonnet. The camera zooms inside her head, a sparse autoencoder splits a polysemantic neuron, and you test each feature in the test shed. | Features, polysemantic neurons, superposition, sparse autoencoders, circuits, ablation, clamping, steering, causal evidence |
+| 4 | The Bake Sale | Adversarial AI | Five customers trick her with a sticker, a fake note, flattery, a stream of questions and a poisoned gold-star rule. For each one the blue team tries a fix that fails, then one that works. | Adversarial examples, evasion, adversarial patches, prompt injection, sycophancy, jailbreaks, model extraction, data poisoning, backdoors, adaptive attacks, adversarial training, certified defenses, red teaming |
+| 5 | Her Bedroom | Alignment | You reward her with stickers for each toy put away, so she dumps the bin and re-cleans it. You reward photos of a clean room, so she shoves the mess side to side. Four alignment fixes close the gap. | Alignment, misalignment, reward as a proxy, reinforcement learning, human feedback (RLHF), specification gaming, reward hacking, Constitutional AI, goal misgeneralization, distribution shift |
+| 6 | The Operating Room | Transparent AI | The hospital wants AImelia in surgery. Her model card already says no. Every trust setting fails, and you lead the incident response. | Transparency, model and data cards, provenance, grounding, citation faithfulness, agentic approvals, traceability, logging, monitoring, incident response, calibrated trust |
+
+## Major design decisions
+
+**One literal-minded character carries every unit.** AImelia does exactly what she is told, which turns abstract failure modes like shortcut learning, specification gaming and prompt injection into jokes a player can see coming. Because the same character appears in every level, players can compare how the same kind of mistake looks from the inside of the model, from the outside, and from the system around it.
+
+**Failure first, vocabulary second.** Each exercise lets the player watch AImelia fail before any term appears. The eXplain screen then names the concept, so the definition attaches to something the player already experienced rather than arriving cold.
+
+**Two exercises per unit, ending in a congratulations screen.** Every level lists the exact concepts AImelia learned, which doubles as a recap and as the list players rate in the post-game survey.
+
+**The brain panel changes with the unit.** Level 1 shows readable rules because interpretable models are readable. Level 2 locks the brain because post-hoc methods test a black box from the outside. Level 3 opens her head because mechanistic interpretability looks inside. This keeps the difference between the units visible without extra explanation.
+
+**A light-to-dark tonal arc.** The first five levels are silly on purpose. Level 6 drops the jokes, dims the room and moves to an operating room, because the final lesson is that the right answer can be not trusting the AI at all. Nothing in the level is graphic, and the patient is always stabilized by the human surgeon.
+
+**Rules up front, Next only when something goes wrong.** Normal moments play automatically, and the player only clicks Next when AImelia gets something wrong. This came directly out of playtesting (see below).
+
+## Iterative development
+
+The game went through more than 25 published versions in one development session, with each round driven by playing the current build and reacting to it. The most important changes were:
+
+- **Pacing.** Early dialogue advanced on a timer and moved faster than people could read, so every line now waits for a **Next** click. Later, Level 4 felt slow, so routine sales and successful fixes now play automatically and Next only appears when something goes wrong. Level 4 dropped to 23 clicks across five rounds.
+- **Level 1 was redesigned twice.** The first proposals mapped levels onto course vocabulary and felt forced, and the second set treated AImelia like a child. The final version keeps her as a silly adult in the kitchen, with two clickable stations and an eXplain step before passing.
+- **Level 4 was rebuilt for clarity.** The first version hid the rules AImelia had been trained on, so players could not tell why she was being fooled. The rebuilt level shows her training card before the sale, including a gold-star rule the principal never approved, and splits the level into five rounds with a blue-team fix that fails followed by one that passes. A round about extraction was also reworded after the five-question limit was confused with the five-treat discount.
+- **Level 5 was rebuilt so the player gives the rewards.** The first version used a parent and children as raters. Following the structure of Level 2, the player now hands out the stickers and gold stars directly, which makes it clear that the human feedback being gamed is the player's own.
+- **The final level shifted tone on purpose.** The surgery was planned as the most serious moment, so it uses a quieter palette, no jokes, and a postmortem whose correct answer is that AImelia should not be in the room.
+- **Writing style pass.** All narration and explanation text was revised to remove stock AI phrasing, while keeping AImelia's jokes and the course definitions.
+
+## Evaluation
+
+The game includes a built-in pre and post survey to measure whether playing changed how familiar players feel with each unit's concepts.
+
+- **Before playing:** name, age, familiarity with using AI, and familiarity with each of the six units' concepts, rated None, Beginner, Competent, Proficient or Expert.
+- **After playing:** the same six familiarity ratings, approximate minutes played, and an optional message to the creator about improvements, the experience, or anything helpful or confusing.
+- **Scoring:** each rating is scored from 0 (None) to 4 (Expert), so a player's gain is the number of levels they moved up, summed across the six units.
+- **Results:** the password-protected Results page in the Skip to menu shows the number of completed surveys, the average gain, the share of players who improved, average minutes played, before and after averages for each unit, the distribution of gains, gains by AI familiarity, every message to the creator, and a CSV export.
+
+Responses from the public link are sent to a Google Sheet owned by the creator through a small Google Apps Script web app (`apps-script/Code.gs`). Players who cannot reach the sheet receive a results code they can send to the creator, and the Results page accepts pasted codes.
+
+This is self-reported familiarity, which measures confidence more than understanding, so the results describe how players felt about each topic before and after playing rather than a test of what they learned.
+
+## Limitations
+
+- **Illustrative numbers.** The XAI tool results in the game, such as SHAP values and feature importance percentages, are written to teach the concept and are not computed from a real model.
+- **Scripted outcomes.** Many player choices lead to the same result, because each scene is designed to show one specific failure clearly.
+- **Coverage gaps.** Some course topics appear only in eXplain text or not at all, including LIME, partial dependence and ICE plots, concept-based explanations such as TCAV, attention, and the monitoring, dataset bias and multi-agent material in Unit 6.
+- **Self-reported evaluation.** The survey measures perceived familiarity, has no control group, and depends on who chooses to play.
+- **Accessibility.** The game has no sound and only partial keyboard and screen reader support, and the pixel art relies on color in places.
+- **Simple privacy controls.** The results password is checked in the browser and on the Apps Script endpoint, which is enough to keep casual visitors out but is not real authentication. Players are asked only for a name and age, and no other personal data is collected.
+- **Unit naming.** The course syllabus calls Unit 6 Human-AI Interaction, while the course notes title it Transparent AI. The game follows the notes.
+
+## Future work
+
+- Run a small real model under the laundry level so the saliency map, SHAP values and counterfactuals are actually computed.
+- Replace self-rated familiarity with short scenario questions before and after playing, so the survey measures recognition and not just confidence.
+- Let player choices change outcomes, so players can explore different fixes and see their consequences.
+- Add a version for younger players, sound, full keyboard support, and saved progress between sessions.
+- Add levels for the topics listed under limitations.
+
+## Repository contents
+
+| Path | What it is |
+|---|---|
+| `index.html` | The complete game in one file: art, levels, surveys and results page |
+| `apps-script/Code.gs` | The Google Apps Script web app that stores survey responses in a Google Sheet |
+
+## Running your own survey backend
+
+1. Create a Google Sheet, open **Extensions → Apps Script**, and paste in `apps-script/Code.gs`.
+2. Deploy it as a web app with **Execute as: Me** and **Who has access: Anyone**.
+3. Copy the web app URL and set it as `ENDPOINT` near the top of the survey section in `index.html`.
+
+## Credits and references
+
+- **Inspiration:** AImelia was modeled after Amelia Bedelia, the famously literal housekeeper from the *Amelia Bedelia* books by Peggy Parish and, later, Herman Parish. AImelia's look and every scene in the game are original.
+- **Course:** This video game was created using learning concepts introduced in XAI, AIPI 590.01 Fa26, taught by Dr. Brinnae Bent at Duke University, and draws on her workbook: Bent, B. (n.d.). *Explainable AI* [Online workbook]. Duke University. https://explainableaiworkbook.com. Licensed under CC BY-SA 4.0.
+- **Duke University:** Thank you to Duke University and the AI for Product Innovation (AIPI) program at the Pratt School of Engineering.
+- **Book Club:** Buolamwini, J. *Unmasking AI*. Christian, B. *The Alignment Problem*. Schaich Borg, J., Sinnott-Armstrong, W., and Conitzer, V. *Moral AI*.
+- **Learning theory:** Papert, S. (1980). *Mindstorms: Children, Computers, and Powerful Ideas*. Gee, J. P. (2003). *What Video Games Have to Teach Us About Learning and Literacy*.
+
+## Use of AI
+
+This game was built with the help of Claude (Anthropic). The creator set the concept, the character and the structure of every level, chose or reshaped each scenario Claude proposed, and played and revised each version. Claude wrote the code and pixel art and drafted the text, which the creator then directed and edited for accuracy and voice.
