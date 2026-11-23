@@ -84,7 +84,7 @@ The game includes a built-in pre and post survey to measure whether playing chan
 
 Responses from the public link are sent to a Google Sheet owned by the creator through a small Google Apps Script web app (`apps-script/Code.gs`). Players who cannot reach the sheet receive a results code they can send to the creator, and the Results page accepts pasted codes.
 
-This is self-reported familiarity, which measures confidence more than understanding, so the results describe how players felt about each topic before and after playing rather than a test of what they learned.
+This is self-reported familiarity, which measures confidence more than understanding, so the results describe how players felt about each topic before and after playing rather than a test of what they learned. Self-reported familiarity was chosen on purpose to keep the barrier to entry low for casual players, since the first goal was to get people to play and to gather initial data to build on.
 
 ### Results (first four hours after launch, November 22, 2026)
 
@@ -143,7 +143,7 @@ Most players started at None for every unit and finished around Beginner. Player
 ## Future work
 
 - Run a small real model under the laundry level so the saliency map, SHAP values and counterfactuals are actually computed.
-- Add six short scenario questions, one per unit, before and after playing, so the evaluation measures understanding alongside self-reported familiarity. This was considered during the first night of data collection and held back so the instrument would stay the same for every player.
+- Add six short scenario questions, one per unit, before and after playing, so the evaluation measures understanding alongside self-reported familiarity. A knowledge quiz was considered and held back on purpose for this first round. Many players were friends, family and coworkers who were not actively looking to learn XAI, and a quiz before and after the game would have raised the barrier to entry and likely lowered participation. Keeping the survey short and low-pressure made it easier to collect an initial set of data, which future versions can build on with a more demanding measure of understanding.
 - Let player choices change outcomes, so players can explore different fixes and see their consequences.
 - Add a version for younger players, sound, full keyboard support, and saved progress between sessions.
 - Add levels for the topics listed under limitations.
