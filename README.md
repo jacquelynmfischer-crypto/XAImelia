@@ -86,34 +86,38 @@ Responses from the public link are sent to a Google Sheet owned by the creator t
 
 This is self-reported familiarity, which measures confidence more than understanding, so the results describe how players felt about each topic before and after playing rather than a test of what they learned. Self-reported familiarity was chosen on purpose to keep the barrier to entry low for casual players, since the first goal was to get people to play and to gather initial data to build on.
 
-### Results (first four hours after launch, November 22, 2026)
+### Results (first 24 hours after launch, November 22 to 23, 2026)
 
-The link was shared on Facebook and LinkedIn, and 15 people started the pre-game survey within about four hours. The creator's own test run is excluded below, which leaves 14 players, and 11 of them finished the game and the post-game survey (79% completion). Players ranged from 16 to 63 years old with a median age of 34, and most rated themselves Beginner or Competent with AI.
+The link was shared on Facebook, LinkedIn and with coworkers on Microsoft Teams. The creator's own test run is excluded below. In the first day, 29 players started the pre-game survey and 19 finished the game and the post-game survey (66% completion). Players ranged from 16 to 69 years old with a median age of 38, and most rated themselves Beginner or Competent with AI.
 
-| Measure | Result (n = 11) |
+Before playing, the average player rated their AI familiarity at 1.66 out of 4, while their average familiarity with the XAI concepts was 0.35. Nineteen of the 29 rated every XAI concept None, including eight who rated themselves Competent with AI or higher. This gap between everyday AI use and XAI familiarity is the problem the game was built to address.
+
+| Measure | Result (n = 19) |
 |---|---|
-| Average familiarity before playing (0 to 4, across all six units) | 0.26 |
-| Average familiarity after playing | 1.62 |
-| Average gain per unit | +1.36 levels |
-| Average total gain across the six units | +8.2 levels |
-| Players who improved | 10 of 11 (one reported no change, none went down) |
-| Unit ratings that went up | 55 of 66 |
+| Average familiarity before playing (0 to 4, across all six units) | 0.42 |
+| Average familiarity after playing | 1.67 |
+| Average gain per unit | +1.25 levels |
+| Average total gain across the six units | +7.5 levels |
+| Players who improved | 18 of 19 (one reported no change, none went down) |
+| Unit ratings that went up | 100 of 114 (none went down) |
 | Median time played | 20 minutes |
 
 | Unit | Before | After |
 |---|---|---|
-| 1 Interpretable ML | 0.45 | 1.82 |
-| 2 Explainable ML | 0.27 | 1.55 |
-| 3 Mechanistic Interpretability | 0.18 | 1.55 |
-| 4 Adversarial AI | 0.27 | 1.55 |
-| 5 Alignment | 0.18 | 1.55 |
-| 6 Transparent AI | 0.18 | 1.73 |
+| 1 Interpretable ML | 0.58 | 1.74 |
+| 2 Explainable ML | 0.42 | 1.63 |
+| 3 Mechanistic Interpretability | 0.37 | 1.63 |
+| 4 Adversarial AI | 0.47 | 1.63 |
+| 5 Alignment | 0.32 | 1.63 |
+| 6 Transparent AI | 0.37 | 1.74 |
 
-The gain is statistically significant. A one-sided Wilcoxon signed-rank test on each player's average rating before and after playing gives W = 55, p = 0.001, with a large effect size (d = 1.24). Each unit also improved on its own (p ≤ 0.004 for all six). The Wilcoxon test was chosen because the ratings are ordinal and the sample is small, so it does not assume the gains are normally distributed.
+The gain is statistically significant. A one-sided Wilcoxon signed-rank test on each player's average rating before and after playing gives W = 171, p < 0.001, with a large effect size (d = 1.45). Each unit also improved on its own (p ≤ 0.0002 for all six). The Wilcoxon test was chosen because the ratings are ordinal and the sample is small, so it does not assume the gains are normally distributed.
 
-Seven of the 11 players gave the same rating to every unit after playing, which suggests they rated their overall impression. As a sensitivity check, the four players whose ratings varied by unit gained +1.33 levels per unit, nearly the same as the full group's +1.36. With only four players, the smallest p-value this test can produce is 0.0625, so this check supports the size of the gain without adding statistical power.
+Twelve of the 19 players gave the same rating to every unit after playing, which suggests they rated their overall impression. As a sensitivity check, the seven players whose ratings varied by unit gained +1.21 levels per unit, nearly the same as the full group's +1.25, and that gain is significant on its own (p = 0.008, d = 1.81).
 
-Most players started at None for every unit and finished around Beginner. Players who rated themselves Competent with AI before playing gained the most (+1.83 per unit, n = 5), while Beginners gained less (+0.89, n = 3), which suggests some prior AI use helps players connect the scenes to the concepts. Messages to the creator praised the interactive approach, and one asked for slower automatic text, which led to the timing change described above. Individual responses stay in the private sheet and are reported here only in aggregate.
+Most players started at None for every unit and finished around Beginner. Players who rated themselves Competent with AI before playing gained the most (+1.67 per unit, n = 7), while Beginners (+1.05, n = 7) and Proficient players (+0.92, n = 4) gained less. Beginners may need more support to connect the scenes to the concepts, and Proficient players started with less room to grow.
+
+Players also left honest feedback in the post-game message box. Several praised the guided, interactive approach to the concepts and their impacts. One asked for slower automatic text, which led to the timing change described above. One said there was a lot to read and some of it went over their head, and suggested introducing one process at a time before layering them together. Another pointed out that the game is one-directional, with preset options and outcomes, so there is only one way through each level. Both of those comments are now listed under limitations and future work. Individual responses stay in the private sheet and are reported here only in aggregate.
 
 **Reproducing the numbers.** Export the sheet as CSV and run `python analysis/analyze.py responses.csv --exclude-id <creator test id>`. The script prints every figure in this section, including the statistical tests and the sensitivity check, without printing any names.
 
@@ -123,8 +127,10 @@ Most players started at None for every unit and finished around Beginner. Player
 - **Scripted outcomes.** Many player choices lead to the same result, because each scene is designed to show one specific failure clearly.
 - **Coverage gaps.** Some course topics appear only in eXplain text or not at all, including LIME, partial dependence and ICE plots, concept-based explanations such as TCAV, attention, and the monitoring, dataset bias and multi-agent material in Unit 6.
 - **Self-reported evaluation.** The survey measures perceived familiarity, has no control group, and depends on who chooses to play.
-- **Small convenience sample.** The first 11 completed surveys came from the creator's own social network, who may be inclined to rate the game kindly. Seven of the 11 gave the same rating to every unit after playing, so many players likely rated their overall impression rather than each unit separately. The four who rated units differently showed the same size of gain, but four players is too few to confirm it statistically.
-- **Dropouts.** Three of the 14 players who started did not reach the post-game survey, and the game has no way to record where they stopped.
+- **Small convenience sample.** The 19 completed surveys came from the creator's own social network and coworkers, who may be inclined to rate the game kindly. Twelve of the 19 gave the same rating to every unit after playing, so many players likely rated their overall impression rather than each unit separately. The seven who rated units differently showed the same size of gain.
+- **Dropouts.** Ten of the 29 players who started did not reach the post-game survey, and the game has no way to record where they stopped.
+- **One path through each level.** Options and outcomes are scripted, so players cannot try their own fixes or see alternative outcomes, which one player called out directly.
+- **Reading load.** Some levels introduce several concepts at once, and one player found it a lot to read and hard to follow.
 - **Accessibility.** The game has no sound and only partial keyboard and screen reader support, and the pixel art relies on color in places.
 - **Simple privacy controls.** The results password is checked in the browser and on the Apps Script endpoint, which is enough to keep casual visitors out but is not real authentication. Players are asked only for a name and age, and no other personal data is collected.
 - **Unit naming.** The course syllabus calls Unit 6 Human-AI Interaction, while the course notes title it Transparent AI. The game follows the notes.
@@ -142,6 +148,7 @@ Most players started at None for every unit and finished around Beginner. Player
 
 ## Future work
 
+- Break the explanations into one concept at a time before layering them together, and cut the reading load in the denser levels.
 - Run a small real model under the laundry level so the saliency map, SHAP values and counterfactuals are actually computed.
 - Add six short scenario questions, one per unit, before and after playing, so the evaluation measures understanding alongside self-reported familiarity. A knowledge quiz was considered and held back on purpose for this first round. Many players were friends, family and coworkers who were not actively looking to learn XAI, and a quiz before and after the game would have raised the barrier to entry and likely lowered participation. Keeping the survey short and low-pressure made it easier to collect an initial set of data, which future versions can build on with a more demanding measure of understanding.
 - Let player choices change outcomes, so players can explore different fixes and see their consequences.
