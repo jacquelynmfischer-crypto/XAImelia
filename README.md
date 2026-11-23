@@ -109,7 +109,13 @@ The link was shared on Facebook and LinkedIn, and 15 people started the pre-game
 | 5 Alignment | 0.18 | 1.55 |
 | 6 Transparent AI | 0.18 | 1.73 |
 
+The gain is statistically significant. A one-sided Wilcoxon signed-rank test on each player's average rating before and after playing gives W = 55, p = 0.001, with a large effect size (d = 1.24). Each unit also improved on its own (p ≤ 0.004 for all six). The Wilcoxon test was chosen because the ratings are ordinal and the sample is small, so it does not assume the gains are normally distributed.
+
+Seven of the 11 players gave the same rating to every unit after playing, which suggests they rated their overall impression. As a sensitivity check, the four players whose ratings varied by unit gained +1.33 levels per unit, nearly the same as the full group's +1.36. With only four players, the smallest p-value this test can produce is 0.0625, so this check supports the size of the gain without adding statistical power.
+
 Most players started at None for every unit and finished around Beginner. Players who rated themselves Competent with AI before playing gained the most (+1.83 per unit, n = 5), while Beginners gained less (+0.89, n = 3), which suggests some prior AI use helps players connect the scenes to the concepts. Messages to the creator praised the interactive approach, and one asked for slower automatic text, which led to the timing change described above. Individual responses stay in the private sheet and are reported here only in aggregate.
+
+**Reproducing the numbers.** Export the sheet as CSV and run `python analysis/analyze.py responses.csv --exclude-id <creator test id>`. The script prints every figure in this section, including the statistical tests and the sensitivity check, without printing any names.
 
 ## Limitations
 
@@ -117,7 +123,7 @@ Most players started at None for every unit and finished around Beginner. Player
 - **Scripted outcomes.** Many player choices lead to the same result, because each scene is designed to show one specific failure clearly.
 - **Coverage gaps.** Some course topics appear only in eXplain text or not at all, including LIME, partial dependence and ICE plots, concept-based explanations such as TCAV, attention, and the monitoring, dataset bias and multi-agent material in Unit 6.
 - **Self-reported evaluation.** The survey measures perceived familiarity, has no control group, and depends on who chooses to play.
-- **Small convenience sample.** The first 11 completed surveys came from the creator's own social network, who may be inclined to rate the game kindly. Seven of the 11 gave the same rating to every unit after playing, so many players likely rated their overall impression rather than each unit separately.
+- **Small convenience sample.** The first 11 completed surveys came from the creator's own social network, who may be inclined to rate the game kindly. Seven of the 11 gave the same rating to every unit after playing, so many players likely rated their overall impression rather than each unit separately. The four who rated units differently showed the same size of gain, but four players is too few to confirm it statistically.
 - **Dropouts.** Three of the 14 players who started did not reach the post-game survey, and the game has no way to record where they stopped.
 - **Accessibility.** The game has no sound and only partial keyboard and screen reader support, and the pixel art relies on color in places.
 - **Simple privacy controls.** The results password is checked in the browser and on the Apps Script endpoint, which is enough to keep casual visitors out but is not real authentication. Players are asked only for a name and age, and no other personal data is collected.
@@ -137,7 +143,7 @@ Most players started at None for every unit and finished around Beginner. Player
 ## Future work
 
 - Run a small real model under the laundry level so the saliency map, SHAP values and counterfactuals are actually computed.
-- Replace self-rated familiarity with short scenario questions before and after playing, so the survey measures recognition and not just confidence.
+- Add six short scenario questions, one per unit, before and after playing, so the evaluation measures understanding alongside self-reported familiarity. This was considered during the first night of data collection and held back so the instrument would stay the same for every player.
 - Let player choices change outcomes, so players can explore different fixes and see their consequences.
 - Add a version for younger players, sound, full keyboard support, and saved progress between sessions.
 - Add levels for the topics listed under limitations.
@@ -148,6 +154,7 @@ Most players started at None for every unit and finished around Beginner. Player
 | Path | What it is |
 |---|---|
 | `index.html` | The complete game in one file: art, levels, surveys and results page |
+| `analysis/analyze.py` | Reproduces every survey result in this README from the sheet's CSV export |
 | `apps-script/Code.gs` | The Google Apps Script web app that stores survey responses in a Google Sheet |
 
 ## Running your own survey backend
