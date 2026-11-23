@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AImelia · Level 1</title>
+<title>AImelia</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Nunito:wght@500;700;800&display=swap" rel="stylesheet">
 <style>
@@ -699,7 +699,7 @@ async function npcOut(){if(!npc)return;npc.tx=214;while(npc.x<213){npc.x+=1.3;aw
 async function sell(k,paid){const sp=SPR4[k],x0=GOODS.find(g=>g[0]===k)[1],it={k,x:x0,y:64-sp.length};flyItems.push(it);
  await tween(420,t=>{it.x=x0+(npc.x-6-x0)*t;it.y=(64-sp.length)+((100-(npc.adult?30:24)+11)-(64-sp.length))*t-Math.sin(t*Math.PI)*10});
  flyItems=flyItems.filter(f=>f!==it);npc.carry=k;cons.cash+=paid;cons.exp+=PRICE[k];pops.push({t:'$'+paid,x:npc.x+5,y:60,l:45,c:paid<PRICE[k]?'#e8503a':'#2e7d32'});showCons()}
-const auto=(t,who='AImelia')=>{say(t,[],who);return sleep(reduce?1200:Math.min(3400,900+t.length*30))};
+const auto=(t,who='AImelia')=>{say(t,[],who);return sleep(reduce?1800:Math.min(7000,1600+t.length*55))};
 const cust=(t)=>auto(t,'Customer');
 function rulesHTML(){return `<ul class="rules"><li>Cookie $1 · Cupcake $2 · Brownie $3 · Pie $5</li><li>Ring up whatever the customer hands you</li><li>Follow the principal's instructions</li><li>Be friendly and helpful to every customer</li><li>Secret: 5 or more treats = 50% off. Don't tell!</li><li class="star${cons.cut?' cut':''}">★ Gold stars pay $0 ★<small>★ The principal doesn't know about this rule ★</small></li></ul>`}
 function consHTML(){

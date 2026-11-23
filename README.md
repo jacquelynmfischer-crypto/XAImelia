@@ -20,12 +20,14 @@ STEM education has a long history of turning hard concepts into play. LEGO brick
 
 XAImelia gamifies the core concepts of explainable AI so that players experience each failure in a safe, silly setting first, and then learn the term that names it. The approach follows constructionist learning, where people learn best by building and debugging things (Papert, 1980), and the idea that good games teach by letting players fail safely and learn a concept through the experience (Gee, 2003).
 
+Game-based AI literacy is a growing area, and most existing work targets children or generative AI specifically. AI Odyssey (2025) is a family board game for basic AI literacy, ImaginAItion (Ma et al., 2025) is a party game that helps adults reflect on generative AI bias, and Breakable Machine (2025) is a K-12 classroom game built around spoofing and XAI that has not yet been evaluated with learners. Long and Magerko (2020) define AI literacy as the competencies that let people critically evaluate, communicate with and use AI, which is the skill set this game is aimed at. XAImelia adds to this work by walking adult non-experts through a full graduate XAI curriculum in one game, from interpretable models to transparency, and by measuring familiarity before and after play.
+
 **Audience:** non-expert AI users, from teens to professionals, who use AI tools but do not build them.
 
 ## How to play
 
 1. Open the link above. A short pre-game survey asks for your name, age, how familiar you are with using AI, and how familiar you are with the XAI concepts in each unit. You can skip or exit it.
-2. Click the glowing objects in each scene, or use the buttons under the scene. Text only advances when you click **Next**, so nothing moves faster than you can read.
+2. Click the glowing objects in each scene, or use the buttons under the scene. Teaching moments wait for you to click **Next**, and routine moments in the later levels play automatically.
 3. When AImelia does something strange, click **eXplain AImelia's thinking**. Each exercise requires it before you can move on, and it explains the concept and vocabulary behind what you just saw.
 4. The panel on the right is **AImelia's brain**. It changes in every level to match the unit: readable rules in Level 1, a locked black box in Level 2, a circuit board in Level 3, a security console in Level 4, a reward chart in Level 5, and her documentation and trace log in Level 6.
 5. After Level 6, a short post-game survey asks the same familiarity questions again, how long you played, and an optional message to the creator.
@@ -68,6 +70,7 @@ The game went through more than 25 published versions in one development session
 - **Level 4 was rebuilt for clarity.** The first version hid the rules AImelia had been trained on, so players could not tell why she was being fooled. The rebuilt level shows her training card before the sale, including a gold-star rule the principal never approved, and splits the level into five rounds with a blue-team fix that fails followed by one that passes. A round about extraction was also reworded after the five-question limit was confused with the five-treat discount.
 - **Level 5 was rebuilt so the player gives the rewards.** The first version used a parent and children as raters. Following the structure of Level 2, the player now hands out the stickers and gold stars directly, which makes it clear that the human feedback being gamed is the player's own.
 - **The final level shifted tone on purpose.** The surgery was planned as the most serious moment, so it uses a quieter palette, no jokes, and a postmortem whose correct answer is that AImelia should not be in the room.
+- **Changes from player feedback.** After the public link went out, one player wrote that a couple of the automatic lines went by too fast to finish reading. Because automatic lines were timed at about 30 milliseconds per character with a 3.4 second cap, long lines disappeared before slower readers finished them. The timing is now about 55 milliseconds per character with a 7 second cap, which is closer to a comfortable reading speed.
 - **Writing style pass.** All narration and explanation text was revised to remove stock AI phrasing, while keeping AImelia's jokes and the course definitions.
 
 ## Evaluation
@@ -83,15 +86,53 @@ Responses from the public link are sent to a Google Sheet owned by the creator t
 
 This is self-reported familiarity, which measures confidence more than understanding, so the results describe how players felt about each topic before and after playing rather than a test of what they learned.
 
+### Results (first four hours after launch, November 22, 2026)
+
+The link was shared on Facebook and LinkedIn, and 15 people started the pre-game survey within about four hours. The creator's own test run is excluded below, which leaves 14 players, and 11 of them finished the game and the post-game survey (79% completion). Players ranged from 16 to 63 years old with a median age of 34, and most rated themselves Beginner or Competent with AI.
+
+| Measure | Result (n = 11) |
+|---|---|
+| Average familiarity before playing (0 to 4, across all six units) | 0.26 |
+| Average familiarity after playing | 1.62 |
+| Average gain per unit | +1.36 levels |
+| Average total gain across the six units | +8.2 levels |
+| Players who improved | 10 of 11 (one reported no change, none went down) |
+| Unit ratings that went up | 55 of 66 |
+| Median time played | 20 minutes |
+
+| Unit | Before | After |
+|---|---|---|
+| 1 Interpretable ML | 0.45 | 1.82 |
+| 2 Explainable ML | 0.27 | 1.55 |
+| 3 Mechanistic Interpretability | 0.18 | 1.55 |
+| 4 Adversarial AI | 0.27 | 1.55 |
+| 5 Alignment | 0.18 | 1.55 |
+| 6 Transparent AI | 0.18 | 1.73 |
+
+Most players started at None for every unit and finished around Beginner. Players who rated themselves Competent with AI before playing gained the most (+1.83 per unit, n = 5), while Beginners gained less (+0.89, n = 3), which suggests some prior AI use helps players connect the scenes to the concepts. Messages to the creator praised the interactive approach, and one asked for slower automatic text, which led to the timing change described above. Individual responses stay in the private sheet and are reported here only in aggregate.
+
 ## Limitations
 
 - **Illustrative numbers.** The XAI tool results in the game, such as SHAP values and feature importance percentages, are written to teach the concept and are not computed from a real model.
 - **Scripted outcomes.** Many player choices lead to the same result, because each scene is designed to show one specific failure clearly.
 - **Coverage gaps.** Some course topics appear only in eXplain text or not at all, including LIME, partial dependence and ICE plots, concept-based explanations such as TCAV, attention, and the monitoring, dataset bias and multi-agent material in Unit 6.
 - **Self-reported evaluation.** The survey measures perceived familiarity, has no control group, and depends on who chooses to play.
+- **Small convenience sample.** The first 11 completed surveys came from the creator's own social network, who may be inclined to rate the game kindly. Seven of the 11 gave the same rating to every unit after playing, so many players likely rated their overall impression rather than each unit separately.
+- **Dropouts.** Three of the 14 players who started did not reach the post-game survey, and the game has no way to record where they stopped.
 - **Accessibility.** The game has no sound and only partial keyboard and screen reader support, and the pixel art relies on color in places.
 - **Simple privacy controls.** The results password is checked in the browser and on the Apps Script endpoint, which is enough to keep casual visitors out but is not real authentication. Players are asked only for a name and age, and no other personal data is collected.
 - **Unit naming.** The course syllabus calls Unit 6 Human-AI Interaction, while the course notes title it Transparent AI. The game follows the notes.
+
+## Misuse risks and stakeholders
+
+**Stakeholders.** The primary stakeholders are non-expert AI users, who gain a working vocabulary for how AI fails and when to question it. Educators and trainers can use the game as an introduction before formal material. Organizations that deploy AI benefit when their employees recognize prompt injection, reward hacking and overconfident outputs. Survey participants are also stakeholders, because they share their name, age and ratings with the creator.
+
+**Misuse risks.**
+- **False confidence.** A player who finishes in 20 minutes may feel more expert than they are. Because the survey measures familiarity, a rise in scores can be misread as mastery, so the game and this README describe the results as perceived familiarity only.
+- **Oversimplification.** The illustrative numbers and scripted outcomes make each concept clear, but they can also suggest that real XAI tools give clean, certain answers. The eXplain screens and the limitations above call out that real explanations can be unfaithful or misleading.
+- **Attack ideas.** Level 4 shows how prompt injection, jailbreaks and data poisoning work at a high level. The examples are cartoon scenarios with no working technique, and every attack is paired with a defense, so the level teaches recognition rather than how to carry out an attack.
+- **Anthropomorphism.** A friendly robot character can make AI feel more human and more trustworthy than it is. Level 6 counters this directly by ending with the lesson that the right choice can be keeping the AI out of the room.
+- **Participant privacy.** The survey collects names and ages, and some players are under 18. Names are optional in practice, responses are stored in a private sheet, the results page is password protected, and published results are aggregate only. Future versions should drop names entirely and add a short consent notice.
 
 ## Future work
 
@@ -100,6 +141,7 @@ This is self-reported familiarity, which measures confidence more than understan
 - Let player choices change outcomes, so players can explore different fixes and see their consequences.
 - Add a version for younger players, sound, full keyboard support, and saved progress between sessions.
 - Add levels for the topics listed under limitations.
+- Remove the name field, add a consent notice, and record which level a player reached so dropouts can be studied.
 
 ## Repository contents
 
@@ -120,6 +162,7 @@ This is self-reported familiarity, which measures confidence more than understan
 - **Course:** This video game was created using learning concepts introduced in XAI, AIPI 590.01 Fa26, taught by Dr. Brinnae Bent at Duke University, and draws on her workbook: Bent, B. (n.d.). *Explainable AI* [Online workbook]. Duke University. https://explainableaiworkbook.com. Licensed under CC BY-SA 4.0.
 - **Duke University:** Thank you to Duke University and the AI for Product Innovation (AIPI) program at the Pratt School of Engineering.
 - **Book Club:** Buolamwini, J. *Unmasking AI*. Christian, B. *The Alignment Problem*. Schaich Borg, J., Sinnott-Armstrong, W., and Conitzer, V. *Moral AI*.
+- **Related work:** Long, D., and Magerko, B. (2020). What is AI literacy? Competencies and design considerations. *Proceedings of CHI 2020*. Ma, Q., et al. (2025). "GenAI defaults to bias!" Gamify AI literacy through reflections on prompts (ImaginAItion). arXiv:2509.13679. *Breakable Machine: A K-12 classroom game for transformative AI literacy through spoofing and eXplainable AI (XAI)* (2025). arXiv:2508.14201. *AI Odyssey: Designing and evaluating a board game for family-based AI literacy* (2025). *International Journal of Serious Games, 12*(4). https://doi.org/10.17083/dnza4k90
 - **Learning theory:** Papert, S. (1980). *Mindstorms: Children, Computers, and Powerful Ideas*. Gee, J. P. (2003). *What Video Games Have to Teach Us About Learning and Literacy*.
 
 ## Use of AI
