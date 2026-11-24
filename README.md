@@ -90,6 +90,8 @@ This is self-reported familiarity, which measures confidence more than understan
 
 The link was shared on Facebook, LinkedIn and with coworkers on Microsoft Teams. The creator's own test run is excluded below. In the first day, 29 players started the pre-game survey and 19 finished the game and the post-game survey (66% completion). Players ranged from 16 to 69 years old with a median age of 38, and most rated themselves Beginner or Competent with AI.
 
+Results can be found by navigating to the results page and typing in the password 'xai' or by checking the google sheet at https://docs.google.com/spreadsheets/d/1-1qQVJBW58IRtFoai_ym9uUrxbQSFLvAg-lyMtY1Xp4/edit?gid=531709106#gid=531709106
+
 Before playing, the average player rated their AI familiarity at 1.66 out of 4, while their average familiarity with the XAI concepts was 0.35. Nineteen of the 29 rated every XAI concept None, including eight who rated themselves Competent with AI or higher. This gap between everyday AI use and XAI familiarity is the problem the game was built to address.
 
 | Measure | Result (n = 19) |
